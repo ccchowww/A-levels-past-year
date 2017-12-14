@@ -4,6 +4,9 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import TextField from 'material-ui/TextField';
+import {cyan300, blueGrey500} from 'material-ui/styles/colors';
+import FlatButton from 'material-ui/FlatButton';
+
 
 const subjects = [{
   subjectName: "Accounting (9706)",
@@ -167,7 +170,24 @@ const sessions = [
 ]
 
 
-
+const styles = {
+  
+  underlineStyle: {
+    borderColor: cyan300,
+  },
+  floatingLabelStyle: {
+    color: blueGrey500,
+  },
+  floatingLabelFocusStyle: {
+    color: blueGrey500,
+  },
+  labelStyle: {
+    color: blueGrey500,
+  },
+  iconStyle: {
+    fill: cyan300,
+  },
+};
 
 const subjectList = subjects.map((subject, index) => {
       return (
@@ -192,7 +212,6 @@ class App extends Component {
     sessionSelected: null,
     yearSelected: "",
     value: "",
-    value2: "",
     name: "",
   }
 
@@ -200,15 +219,89 @@ class App extends Component {
   handleSessionChange = (event, index, sessionSelected) => this.setState({sessionSelected});
   
   
-  
 
   render() {
+
+    let buttonQp = null;
+    let buttonMs = null;
+    if (buttonQp !== this.state.sessionSelected) {
+      buttonQp = <div>
+      <FlatButton
+      label= {
+      this.state.subjectSelected.match(/\d{4}/) +
+      "_" +
+      this.state.sessionSelected +
+      this.state.value +
+      "_" +
+      "qp" +
+      "_" +
+      this.state.name
+        }
+        backgroundColor="#4DD0E1"
+        hoverColor="#80DEEA"
+        style={{ paddingLeft: '40px', paddingRight: '40px', width: "250px"}}
+        labelStyle={{color: "#ffffff", fontWeight: 600, fontSize: "14px", textTransform: "none"}}
+        href={"https://papers.gceguide.xyz/A%20Levels/" +
+        this.state.subjectSelected.replace(/ /g,"%20") +
+        "/" +
+        this.state.subjectSelected.match(/\d{4}/) +
+        "_" +
+        this.state.sessionSelected +
+        this.state.value +
+        "_" +
+        "qp" +
+        "_" +
+        this.state.name +
+        ".pdf"}
+        target="_blank"
+      />
+    </div>
+    }
+    if (buttonMs !== this.state.sessionSelected) {
+      buttonMs = <div>
+      <FlatButton
+      label= {
+      this.state.subjectSelected.match(/\d{4}/) +
+      "_" +
+      this.state.sessionSelected +
+      this.state.value +
+      "_" +
+      "ms" +
+      "_" +
+      this.state.name
+        }
+        backgroundColor="#4DD0E1"
+        hoverColor="#80DEEA"
+        style={{ paddingLeft: '40px', paddingRight: '40px', margin: '5px', width: "250px"}}
+        labelStyle={{color: "#ffffff", fontWeight: 600, fontSize: "14px", textTransform: "none"}}
+        href={"https://papers.gceguide.xyz/A%20Levels/" +
+        this.state.subjectSelected.replace(/ /g,"%20") +
+        "/" +
+        this.state.subjectSelected.match(/\d{4}/) +
+        "_" +
+        this.state.sessionSelected +
+        this.state.value +
+        "_" +
+        "ms" +
+        "_" +
+        this.state.name +
+        ".pdf"}
+        target="_blank"
+      />
+      </div>
+    }
+
+
+
     return (
       <MuiThemeProvider>
+    <div className="wrapper">
       <div>
         <SelectField
-          
-          floatingLabelStyle={{color: "black"}}
+          className="center"
+          floatingLabelStyle={styles.labelStyle}
+          iconStyle={styles.iconStyle}
+          underlineStyle={styles.underlineStyle}
           floatingLabelText="Subject (code)"
           value={this.state.subjectSelected}
           onChange={this.handleSubjectChange}
@@ -219,8 +312,11 @@ class App extends Component {
       </div>
       <div>
         <SelectField
-          floatingLabelStyle={{color: "black"}}
-          floatingLabelText="Session"
+          className="center"
+          iconStyle={styles.iconStyle}
+          underlineStyle={styles.underlineStyle}
+          floatingLabelStyle={styles.labelStyle}
+          floatingLabelText="Session (month)"
           value={this.state.sessionSelected}
           onChange={this.handleSessionChange}
           autoWidth={true}
@@ -230,8 +326,11 @@ class App extends Component {
       </div>
       <div>
         <TextField
-          floatingLabelStyle={{color: "black"}}
-          floatingLabelText="Year eg. 02, 17..."
+          underlineStyle={styles.underlineStyle}
+          underlineFocusStyle={styles.underlineStyle}
+          floatingLabelStyle={styles.floatingLabelStyle}
+          // floatingLabelStyle={{color: "black"}}
+          floatingLabelText="Year eg. 02, 17"
           onInput={(e)=>{ 
             e.target.value = Math.max(0, parseInt(e.target.value, 10) ).toString().slice(0,2)
         }}
@@ -244,8 +343,10 @@ class App extends Component {
       </div>
       <div>
         <TextField
-          floatingLabelStyle={{color: "black"}}
-          floatingLabelText="Variant eg. 22, 51..."
+          underlineStyle={styles.underlineStyle}
+          underlineFocusStyle={styles.underlineStyle}
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelText="Variant eg. 22, 51"
           onInput={(e)=>{ 
             e.target.value = Math.max(0, parseInt(e.target.value, 10) ).toString().slice(0,2)
         }}
@@ -255,62 +356,9 @@ class App extends Component {
           value={this.state.name}
           onChange={(e, newValue) => this.setState({ name: newValue})}
         />
-        </div>
-        <div>
-        <a target="_blank" href={"https://papers.gceguide.xyz/A%20Levels/" +
-          this.state.subjectSelected.replace(/ /g,"%20") +
-          "/" +
-          this.state.subjectSelected.match(/\d{4}/) +
-          "_" +
-          this.state.sessionSelected +
-          this.state.value +
-          "_" +
-          "qp" +
-          "_" +
-          this.state.name +
-          ".pdf"}>
-          {"QP: " +
-          "https://papers.gceguide.xyz/A%20Levels/" +
-          this.state.subjectSelected.replace(/ /g,"%20") +
-          "/" +
-          this.state.subjectSelected.match(/\d{4}/) +
-          "_" +
-          this.state.sessionSelected +
-          this.state.value +
-          "_" +
-          "qp" +
-          "_" +
-          this.state.name +
-          ".pdf"}
-        </a>
-        </div>
-        <div>
-        <a target="_blank" href={"https://papers.gceguide.xyz/A%20Levels/" +
-          this.state.subjectSelected.replace(/ /g,"%20") +
-          "/" +
-          this.state.subjectSelected.match(/\d{4}/) +
-          "_" +
-          this.state.sessionSelected +
-          this.state.value +
-          "_" +
-          "ms" +
-          "_" +
-          this.state.name +
-          ".pdf"}>
-          {"MS: " +
-          "https://papers.gceguide.xyz/A%20Levels/" +
-          this.state.subjectSelected.replace(/ /g,"%20") +
-          "/" +
-          this.state.subjectSelected.match(/\d{4}/) +
-          "_" +
-          this.state.sessionSelected +
-          this.state.value +
-          "_" +
-          "ms" +
-          "_" +
-          this.state.name +
-          ".pdf"}
-        </a>
+      </div>
+        {buttonQp}
+        {buttonMs}
       </div>
       </MuiThemeProvider>
     );
