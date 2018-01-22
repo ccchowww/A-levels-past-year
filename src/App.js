@@ -331,9 +331,9 @@ class App extends Component {
           floatingLabelStyle={styles.floatingLabelStyle}
           // floatingLabelStyle={{color: "black"}}
           floatingLabelText="Year eg. 02, 17"
-          onInput={(e)=>{ 
-            e.target.value = Math.max(0, parseInt(e.target.value, 10) ).toString().slice(0,2)
-        }}
+          // onInput={(e)=>{ 
+          //   e.target.value = Math.max(0, parseInt(e.target.value, 10) ).toString().slice(0,2)
+        //  
         min={0}
         type="number"
           id="text-field-controlled"
@@ -347,9 +347,9 @@ class App extends Component {
           underlineFocusStyle={styles.underlineStyle}
           floatingLabelStyle={styles.floatingLabelStyle}
           floatingLabelText="Variant eg. 22, 51"
-          onInput={(e)=>{ 
-            e.target.value = Math.max(0, parseInt(e.target.value, 10) ).toString().slice(0,2)
-        }}
+          // onInput={(e)=>{ 
+          //   e.target.value = Math.max(0, parseInt(e.target.value, 10) ).toString().slice(0,2)
+        // }}
         min={0}
         type="number"
           id="text-field-controlled"
