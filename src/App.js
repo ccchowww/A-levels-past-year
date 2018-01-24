@@ -208,7 +208,7 @@ const sessionList = sessions.map((session, index) => {
 
 class App extends Component {
   state = {
-    subjectSelected: "",
+    subjectSelected: null,
     sessionSelected: null,
     yearSelected: "",
     value: "",
@@ -224,6 +224,27 @@ class App extends Component {
 
     let buttonQp = null;
     let buttonMs = null;
+    let buttonAll = null;
+
+    if (buttonAll !== this.state.subjectSelected) {
+      buttonAll = <div>
+        <FlatButton
+          label = {
+              this.state.subjectSelected.match(/\d{4}/) + " (All)"
+            }
+              backgroundColor="#4DD0E1"
+              hoverColor="#80DEEA"
+              style={{ marginTop: "20px", paddingLeft: '40px', paddingRight: '40px', width: "256px"}}
+              labelStyle={{color: "#ffffff", fontWeight: 600, fontSize: "14px", textTransform: "none"}}
+              href={"https://papers.gceguide.xyz/A%20Levels/" +
+                this.state.subjectSelected.replace(/ /g,"%20")
+              }
+          target="_blank"
+          />
+        </div>
+
+    }
+
     if (buttonQp !== this.state.sessionSelected) {
       buttonQp = <div>
         <FlatButton
@@ -239,7 +260,7 @@ class App extends Component {
         }
           backgroundColor="#4DD0E1"
           hoverColor="#80DEEA"
-          style={{ marginTop: "20px", paddingLeft: '40px', paddingRight: '40px', width: "256px"}}
+          style={{ marginTop: "28px", paddingLeft: '40px', paddingRight: '40px', width: "256px"}}
           labelStyle={{color: "#ffffff", fontWeight: 600, fontSize: "14px", textTransform: "none"}}
           href={"https://papers.gceguide.xyz/A%20Levels/" +
           this.state.subjectSelected.replace(/ /g,"%20") +
@@ -350,6 +371,7 @@ class App extends Component {
             onChange={(e, newValue) => this.setState({ name: newValue})}
           />
         </div>
+          {buttonAll}
           {buttonQp}
           {buttonMs}
       </div>
