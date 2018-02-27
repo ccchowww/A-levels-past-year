@@ -191,14 +191,22 @@ const styles = {
 
 const subjectList = subjects.map((subject, index) => {
       return (
-        <MenuItem value={subject.subjectName} key={subject.code} primaryText={subject.subjectName} />
+        <MenuItem
+          value={subject.subjectName}
+          key={subject.code}
+          primaryText={subject.subjectName}
+        />
       )
     }
   )
 
 const sessionList = sessions.map((session, index) => {
       return (
-        <MenuItem value={session.sessionCode} key={session.sessionCode} primaryText={session.sessionName} />
+        <MenuItem
+          value={session.sessionCode}
+          key={session.sessionCode}
+          primaryText={session.sessionName}
+        />
       )
     }
   )
