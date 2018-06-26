@@ -253,7 +253,7 @@ class App extends Component {
 
     }
 
-    if (buttonQp !== this.state.sessionSelected) {
+    if (buttonQp !== this.state.sessionSelected && this.state.subjectSelected !== null) {
       buttonQp = <div>
         <FlatButton
         label= {
@@ -286,7 +286,7 @@ class App extends Component {
         />
     </div>
     }
-    if (buttonMs !== this.state.sessionSelected) {
+    if (buttonMs !== this.state.sessionSelected && this.state.subjectSelected !== null) {
         buttonMs = <div>
         <FlatButton
           label= {
