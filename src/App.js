@@ -244,7 +244,7 @@ class App extends Component {
               hoverColor="#80DEEA"
               style={{ marginTop: "20px", paddingLeft: '40px', paddingRight: '40px', width: "256px"}}
               labelStyle={{color: "#ffffff", fontWeight: 600, fontSize: "14px", textTransform: "none"}}
-              href={"https://papers.gceguide.xyz/A%20Levels/" +
+              href={"https://papers.gceguide.com/A%20Levels/" +
                 this.state.subjectSelected.replace(/ /g,"%20")
               }
           target="_blank"
@@ -270,7 +270,7 @@ class App extends Component {
           hoverColor="#80DEEA"
           style={{ marginTop: "28px", paddingLeft: '40px', paddingRight: '40px', width: "256px"}}
           labelStyle={{color: "#ffffff", fontWeight: 600, fontSize: "14px", textTransform: "none"}}
-          href={"https://papers.gceguide.xyz/A%20Levels/" +
+          href={"https://papers.gceguide.com/A%20Levels/" +
           this.state.subjectSelected.replace(/ /g,"%20") +
           "/" +
           this.state.subjectSelected.match(/\d{4}/) +
@@ -303,7 +303,7 @@ class App extends Component {
           hoverColor="#80DEEA"
           style={{ marginTop: "28px", paddingLeft: '40px', paddingRight: '40px', width: "256px"}}
           labelStyle={{color: "#ffffff", fontWeight: 600, fontSize: "14px", textTransform: "none"}}
-          href={"https://papers.gceguide.xyz/A%20Levels/" +
+          href={"https://papers.gceguide.com/A%20Levels/" +
           this.state.subjectSelected.replace(/ /g,"%20") +
           "/" +
           this.state.subjectSelected.match(/\d{4}/) +
