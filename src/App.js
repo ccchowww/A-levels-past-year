@@ -6,7 +6,7 @@ import MenuItem from 'material-ui/MenuItem';
 import TextField from 'material-ui/TextField';
 import {cyan300, blueGrey500} from 'material-ui/styles/colors';
 import FlatButton from 'material-ui/FlatButton';
-
+import Topbar from './Topbar';
 
 const subjects = [{
   subjectName: "Accounting (9706)",
@@ -323,6 +323,8 @@ class App extends Component {
 
 
   return (
+    <div>
+    <Topbar />
     <MuiThemeProvider>
       <div className="wrapper">
         <div>
@@ -384,6 +386,7 @@ class App extends Component {
           {buttonMs}
       </div>
     </MuiThemeProvider>
+    </div>
     );
   }
 }
